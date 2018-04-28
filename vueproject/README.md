@@ -1,12 +1,14 @@
 # vueproject
 
-> A Vue.js project
 
 ## Build Setup
 
 ``` bash
 # install dependencies
 npm install
+
+# 安装cross-env依赖 用于判断命令run dev 还是 run build
+npm install cross-env –save-dev
 
 # serve with hot reload at localhost:8080
 npm run dev
