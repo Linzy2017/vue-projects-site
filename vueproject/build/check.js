@@ -1,6 +1,6 @@
 /**
  * 用于检测项目是否存在
- * created by alex
+ * created by linqize
  * @returns {boolean}
  */
 

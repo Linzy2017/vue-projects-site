@@ -1,6 +1,11 @@
 'use strict'
 require('./check-versions')()
-
+/* linqize */
+let check = require('./check')
+if (!check.check()) {
+  return false;
+}
+/* linqize */
 process.env.NODE_ENV = 'production'
 
 const ora = require('ora')
