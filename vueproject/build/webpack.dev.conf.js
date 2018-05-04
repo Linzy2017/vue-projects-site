@@ -19,7 +19,6 @@ let project = check.project
 let subProject = 'sites/' + project
 /* linqize */
 
-
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({sourceMap: config.dev.cssSourceMap, usePostCSS: true})
@@ -80,6 +79,14 @@ module.exports = new Promise((resolve, reject) => {
     if (err) {
       reject(err)
     } else {
+
+      /* linqize */
+      let check = require('./check')
+      if (!check.check()) {
+        return false;
+      }
+      /* linqize */
+
       // publish the new Port, necessary for e2e tests
       process.env.PORT = port
       // add port to devServer config
