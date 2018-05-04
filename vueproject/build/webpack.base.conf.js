@@ -8,14 +8,6 @@ function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
-/*20171024 alex */
-var check = require('./check')
-if (!check.check()) {
-  return false;
-}
-/*20171024 alex*/
-
-
 /* linqize */
 var check = require('./check')
 var project = check.project
