@@ -9,7 +9,7 @@ let path = require('path')
 let fs = require('fs')
 
 if (process.env.NODE_ENV === 'development') {
-  project = process.argv[6]
+  project = 'demo'
 } else {
   project = process.argv[2]
 }
@@ -23,7 +23,6 @@ function check() {
 
 //判断文件夹是否存在
   var subPath = path.resolve(__dirname, '../sites/' + project)
-  console.log('../sites/' + project)
   try {
     fs.accessSync(subPath, fs.F_OK);
   } catch (e) {

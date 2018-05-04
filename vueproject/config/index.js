@@ -5,9 +5,9 @@
 const path = require('path')
 
 /* linqize */
-var check = require('../build/check')
-var project = check.project
-var subProject = 'sites/' + project
+let check = require('../build/check')
+let project = check.project
+let subProject = 'sites/' + project
 /* linqize */
 
 module.exports = {
