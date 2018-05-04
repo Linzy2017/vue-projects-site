@@ -4,19 +4,29 @@
  * @returns {boolean}
  */
 
-let project = process.argv[6]
 let path = require('path')
 let fs = require('fs')
 
-if (process.env.NODE_ENV === 'development') {
-  project = 'demo'
-} else {
-  project = process.argv[2]
+let project
+let argv;
+
+//获取npm 输入命令的字符串
+try {
+  argv = JSON.parse(process.env.npm_config_argv).original
+  project = argv[2].slice(2)
+}	catch(ex) {
+  if (process.env.NODE_ENV === 'development') {
+    project = 'demo'
+  } else {
+    argv = process.argv
+    project = argv[2].slice(2)
+  }
 }
+// 去掉命令参数头'--',  --demo => demo
 
 function check() {
   //接收所打包的参数
-  if (project == undefined) {
+  if (project == undefined || project == null) {
     console.log('argv project missed!')
     return false
   }
