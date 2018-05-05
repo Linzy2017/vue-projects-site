@@ -23,11 +23,17 @@ try {
   }
 }
 // 去掉命令参数头'--',  --demo => demo
-
 function check() {
   //接收所打包的参数
   if (project == undefined || project == null) {
     console.log('argv project missed!')
+    return false
+  }
+
+  //命令带参数符号 '--' 判断 不存在则不继续打包
+  let projectSymbol = argv[2].slice(0, 2)
+  if (projectSymbol != '--') {
+    console.log('the symbol "--"  which is before the project name maybe lost\nexample: npm run dev --demo\n         npm run build --demo')
     return false
   }
 
