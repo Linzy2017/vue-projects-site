@@ -5,16 +5,19 @@
     height: 100vh;
     font-size: 0;
   }
-  .btn{
+
+  .btn {
     position: absolute;
     left: 0;
-    top:0;
+    top: 0;
     font-size: .26rem;
   }
-  .restart{
-    top:1rem;
+
+  .restart {
+    top: 1rem;
   }
-  .timer{
+
+  .timer {
     position: absolute;
     left: 50%;
     top: 1rem;
@@ -27,7 +30,8 @@
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
   }
-  .score{
+
+  .score {
     position: absolute;
     left: 50%;
     top: .5rem;
@@ -51,7 +55,7 @@
     >
       <div class="my-view" ref="myView"></div>
     </v-touch>
-    <div class="btn"  @click.stop="startGame">开始游戏</div>
+    <div class="btn" @click.stop="startGame">开始游戏</div>
     <div class="btn restart" @click.stop="restartGame">再来一次</div>
     <div class="timer">{{gameTime}}</div>
     <div class="score">{{score}}</div>
@@ -161,9 +165,9 @@
         //已创建的坠落物
         this.itemCreated = []
         //坠落物创建定时器
-        this.IntervalName =  null
+        this.IntervalName = null
         //游戏暂停状态
-        this.paused = false
+        this.paused = true
         //接到东西生成的信息
         this.messageArr = []
         //比分
@@ -177,7 +181,7 @@
         this.pan = true
         //定时器游戏时间
         this.IntervalTimer = null
-        this.gameTime = 10
+        this.gameTime = 30
       },
       onPanStart: function (e) {
         this.pageX = e.center.x * 100 / this.windowBase * this.scale
@@ -204,7 +208,7 @@
         if (!this.pan) {
           return false
         }
-        let newX =  this.moveX + e.deltaX * this.scale * 1.3
+        let newX = this.moveX + e.deltaX * this.scale * 1.3
         if (newX < -90 * this.scale) {
           newX = -90 * this.scale
         } else if (newX > this.c_width - this.playerHit.width - 90 * this.scale) {
@@ -356,7 +360,7 @@
         let v_ratio = 1 + (30 - this.gameTime) / 30
 
         let _this = this
-        let random = Math.floor(Math.random() * _this.items.length  * v_ratio)
+        let random = Math.floor(Math.random() * _this.items.length * v_ratio)
         random = random >= 2 ? 2 : random
         let item = new Sprite(_this.resources[_this.items[random].image].texture);
         let randomX = Math.random() * (_this.c_width - item.width * _this.scale)
